@@ -1,0 +1,48 @@
+[build-system]
+requires = ["hatchling>=1.24.0"]
+build-backend = "hatchling.build"
+
+[project]
+name = "wrs-engine"
+version = "0.1.0"
+description = "Zero-dependency Agricultural Warehouse Receipt System (WRS) engine: exact Decimal dry-matter moisture shrinkage, EAGC/EAS grain grading & aflatoxin gates, LTV collateral valuation, and margin-call triggers."
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.11"
+authors = [{ name = "Akandwanaho Ivan Alvin" }]
+keywords = [
+    "warehouse-receipts",
+    "agri-finance",
+    "commodities",
+    "collateral",
+    "grain-grading",
+    "fintech",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Financial and Insurance Industry",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Office/Business :: Financial",
+]
+
+[project.scripts]
+wrs-engine = "wrs_engine.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/wrs_engine"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM", "RUF"]
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+warn_unreachable = true
